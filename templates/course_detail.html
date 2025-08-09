@@ -1,0 +1,199 @@
+{% extends "base.html" %}
+
+{% block title %}{{ course.title }} - EduLearn{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <!-- Course Header -->
+    <div class="row mb-5">
+        <div class="col-lg-8">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{ url_for('index') }}">Home</a></li>
+                    <li class="breadcrumb-item active">{{ course.title }}</li>
+                </ol>
+            </nav>
+            <h1 class="display-5 fw-bold mb-3">{{ course.title }}</h1>
+            <p class="lead text-muted">{{ course.description }}</p>
+            <div class="d-flex align-items-center text-muted mb-3">
+                <i class="fas fa-calendar me-2"></i>
+                <span>Created {{ course.created_at.strftime('%B %Y') }}</span>
+            </div>
+        </div>
+        <div class="col-lg-4 text-lg-end">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Course Progress</h5>
+                    <div class="progress mb-3" style="height: 10px;">
+                        <div class="progress-bar" role="progressbar" style="width: 0%"></div>
+                    </div>
+                    <p class="text-muted mb-2">0% Complete</p>
+                    <button class="btn btn-primary btn-sm">Continue Learning</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Course Content Tabs -->
+    <div class="row">
+        <div class="col-12">
+            <ul class="nav nav-tabs" id="courseTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="lectures-tab" data-bs-toggle="tab" data-bs-target="#lectures" type="button" role="tab">
+                        <i class="fas fa-play-circle me-2"></i>Lectures
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="notes-tab" data-bs-toggle="tab" data-bs-target="#notes" type="button" role="tab">
+                        <i class="fas fa-file-alt me-2"></i>Notes
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="overview-tab" data-bs-toggle="tab" data-bs-target="#overview" type="button" role="tab">
+                        <i class="fas fa-info-circle me-2"></i>Overview
+                    </button>
+                </li>
+            </ul>
+
+            <div class="tab-content" id="courseTabContent">
+                <!-- Lectures Tab -->
+                <div class="tab-pane fade show active" id="lectures" role="tabpanel">
+                    <div class="py-4">
+                        {% if lectures %}
+                        <div class="row g-4">
+                            {% for lecture in lectures %}
+                            <div class="col-lg-6">
+                                <div class="card h-100 border-0 shadow-sm">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-start">
+                                            <div class="flex-shrink-0">
+                                                <div class="bg-primary bg-gradient text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+                                                    <i class="fas fa-play"></i>
+                                                </div>
+                                            </div>
+                                            <div class="flex-grow-1 ms-3">
+                                                <h5 class="card-title">{{ lecture.title }}</h5>
+                                                <p class="card-text text-muted">{{ lecture.content[:100] }}{% if lecture.content|length > 100 %}...{% endif %}</p>
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <small class="text-muted">
+                                                        <i class="fas fa-clock me-1"></i>
+                                                        {{ lecture.created_at.strftime('%B %d, %Y') }}
+                                                    </small>
+                                                    <button class="btn btn-outline-primary btn-sm">
+                                                        <i class="fas fa-play me-1"></i>Start Lecture
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                        <div class="text-center py-5">
+                            <i class="fas fa-play-circle fa-3x text-muted mb-3"></i>
+                            <h4 class="text-muted">No lectures available yet</h4>
+                            <p class="text-muted">Lectures will be added here by the course instructor</p>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <!-- Notes Tab -->
+                <div class="tab-pane fade" id="notes" role="tabpanel">
+                    <div class="py-4">
+                        {% if notes %}
+                        <div class="row g-4">
+                            {% for note in notes %}
+                            <div class="col-lg-6">
+                                <div class="card h-100 border-0 shadow-sm">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-start">
+                                            <div class="flex-shrink-0">
+                                                <div class="bg-success bg-gradient text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+                                                    <i class="fas fa-file-alt"></i>
+                                                </div>
+                                            </div>
+                                            <div class="flex-grow-1 ms-3">
+                                                <h5 class="card-title">{{ note.title }}</h5>
+                                                <p class="card-text text-muted">{{ note.content[:100] }}{% if note.content|length > 100 %}...{% endif %}</p>
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <small class="text-muted">
+                                                        <i class="fas fa-calendar me-1"></i>
+                                                        {{ note.created_at.strftime('%B %d, %Y') }}
+                                                    </small>
+                                                    <button class="btn btn-outline-success btn-sm">
+                                                        <i class="fas fa-download me-1"></i>Download
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                        <div class="text-center py-5">
+                            <i class="fas fa-file-alt fa-3x text-muted mb-3"></i>
+                            <h4 class="text-muted">No notes available yet</h4>
+                            <p class="text-muted">Notes and study materials will be added here</p>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <!-- Overview Tab -->
+                <div class="tab-pane fade" id="overview" role="tabpanel">
+                    <div class="py-4">
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <h4>Course Description</h4>
+                                <p class="text-muted">{{ course.description }}</p>
+                                
+                                <h4 class="mt-4">What You'll Learn</h4>
+                                <ul class="list-unstyled">
+                                    <li class="mb-2">
+                                        <i class="fas fa-check text-success me-2"></i>
+                                        Comprehensive understanding of the subject matter
+                                    </li>
+                                    <li class="mb-2">
+                                        <i class="fas fa-check text-success me-2"></i>
+                                        Practical applications and real-world examples
+                                    </li>
+                                    <li class="mb-2">
+                                        <i class="fas fa-check text-success me-2"></i>
+                                        Interactive learning experience
+                                    </li>
+                                    <li class="mb-2">
+                                        <i class="fas fa-check text-success me-2"></i>
+                                        Access to supplementary materials and resources
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="card border-0 shadow-sm">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Course Stats</h5>
+                                        <div class="row text-center">
+                                            <div class="col-6">
+                                                <h4 class="text-primary">{{ lectures|length }}</h4>
+                                                <small class="text-muted">Lectures</small>
+                                            </div>
+                                            <div class="col-6">
+                                                <h4 class="text-success">{{ notes|length }}</h4>
+                                                <small class="text-muted">Notes</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

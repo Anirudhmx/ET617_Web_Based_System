@@ -1,0 +1,325 @@
+{% extends "base.html" %}
+
+{% block title %}Text Lessons - High School Mathematics{% endblock %}
+
+{% block content %}
+<div class="container mt-4 text-lessons">
+    <div class="row">
+        <div class="col-12">
+            <div class="page-header text-center mb-5">
+                <h1 class="display-4 text-white">
+                    <i class="fas fa-book-open"></i> Text Lessons
+                </h1>
+                <p class="lead text-white">Comprehensive high school mathematics lessons and concepts</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Subject Navigation -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title mb-3">
+                        <i class="fas fa-compass"></i> Navigate by Subject
+                    </h5>
+                    <div class="d-flex flex-wrap gap-2">
+                        <a href="#algebra" class="btn btn-outline-primary">Algebra</a>
+                        <a href="#geometry" class="btn btn-outline-success">Geometry</a>
+                        <a href="#calculus" class="btn btn-outline-warning">Calculus</a>
+                        <a href="#statistics" class="btn btn-outline-info">Statistics</a>
+                        <a href="#trigonometry" class="btn btn-outline-danger">Trigonometry</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Algebra Section -->
+    <div id="algebra" class="subject-section mb-5">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="text-primary border-bottom pb-2 mb-4">
+                    <i class="fas fa-square-root-alt"></i> Algebra
+                </h2>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="card h-100 shadow">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">Linear Equations</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">
+                            Linear equations are mathematical expressions where the highest power of the variable is 1. 
+                            They form straight lines when graphed and are fundamental to understanding more complex mathematical concepts.
+                        </p>
+                        <h6>Key Concepts:</h6>
+                        <ul class="small">
+                            <li>Slope-intercept form: y = mx + b</li>
+                            <li>Point-slope form: y - y₁ = m(x - x₁)</li>
+                            <li>Standard form: Ax + By = C</li>
+                            <li>Solving systems of linear equations</li>
+                        </ul>
+                        <div class="mt-3">
+                            <span class="badge bg-primary">Foundation</span>
+                            <span class="badge bg-info">Graphing</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-4">
+                <div class="card h-100 shadow">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">Quadratic Equations</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">
+                            Quadratic equations contain variables raised to the second power and form parabolas when graphed. 
+                            They appear frequently in physics, engineering, and real-world applications.
+                        </p>
+                        <h6>Key Concepts:</h6>
+                        <ul class="small">
+                            <li>Standard form: ax² + bx + c = 0</li>
+                            <li>Factoring methods</li>
+                            <li>Quadratic formula: x = (-b ± √(b² - 4ac)) / 2a</li>
+                            <li>Vertex form: y = a(x - h)² + k</li>
+                        </ul>
+                        <div class="mt-3">
+                            <span class="badge bg-primary">Intermediate</span>
+                            <span class="badge bg-success">Applications</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Geometry Section -->
+    <div id="geometry" class="subject-section mb-5">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="text-success border-bottom pb-2 mb-4">
+                    <i class="fas fa-shapes"></i> Geometry
+                </h2>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="card h-100 shadow">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="mb-0">Triangles and Trigonometry</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">
+                            Triangles are fundamental geometric shapes with three sides and three angles. 
+                            Understanding their properties is essential for solving complex geometric problems.
+                        </p>
+                        <h6>Key Concepts:</h6>
+                        <ul class="small">
+                            <li>Triangle inequality theorem</li>
+                            <li>Pythagorean theorem: a² + b² = c²</li>
+                            <li>Special right triangles (30-60-90, 45-45-90)</li>
+                            <li>Area formulas and perimeter</li>
+                        </ul>
+                        <div class="mt-3">
+                            <span class="badge bg-success">Foundation</span>
+                            <span class="badge bg-warning">Theorems</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-4">
+                <div class="card h-100 shadow">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="mb-0">Circles and Conic Sections</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">
+                            Circles are perfect geometric shapes with all points equidistant from the center. 
+                            They are part of the broader family of conic sections.
+                        </p>
+                        <h6>Key Concepts:</h6>
+                        <ul class="small">
+                            <li>Standard form: (x - h)² + (y - k)² = r²</li>
+                            <li>Circumference: C = 2πr</li>
+                            <li>Area: A = πr²</li>
+                            <li>Arc length and sector area</li>
+                        </ul>
+                        <div class="mt-3">
+                            <span class="badge bg-success">Intermediate</span>
+                            <span class="badge bg-info">Formulas</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Calculus Section -->
+    <div id="calculus" class="subject-section mb-5">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="text-warning border-bottom pb-2 mb-4">
+                    <i class="fas fa-infinity"></i> Calculus
+                </h2>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="card h-100 shadow">
+                    <div class="card-header bg-warning text-white">
+                        <h5 class="mb-0">Limits and Continuity</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">
+                            Limits are the foundation of calculus, describing the behavior of functions as they approach specific values. 
+                            Continuity ensures smooth transitions in mathematical functions.
+                        </p>
+                        <h6>Key Concepts:</h6>
+                        <ul class="small">
+                            <li>Limit definition and notation</li>
+                            <li>One-sided and two-sided limits</li>
+                            <li>Continuity at a point</li>
+                            <li>Intermediate value theorem</li>
+                        </ul>
+                        <div class="mt-3">
+                            <span class="badge bg-warning">Advanced</span>
+                            <span class="badge bg-danger">Foundation</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-4">
+                <div class="card h-100 shadow">
+                    <div class="card-header bg-warning text-white">
+                        <h5 class="mb-0">Derivatives</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">
+                            Derivatives measure the rate of change of functions and are essential for understanding motion, 
+                            optimization, and many real-world phenomena.
+                        </p>
+                        <h6>Key Concepts:</h6>
+                        <ul class="small">
+                            <li>Definition of derivative</li>
+                            <li>Power rule and chain rule</li>
+                            <li>Product and quotient rules</li>
+                            <li>Applications in optimization</li>
+                        </ul>
+                        <div class="mt-3">
+                            <span class="badge bg-warning">Advanced</span>
+                            <span class="badge bg-primary">Applications</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Statistics Section -->
+    <div id="statistics" class="subject-section mb-5">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="text-info border-bottom pb-2 mb-4">
+                    <i class="fas fa-chart-bar"></i> Statistics
+                </h2>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="card h-100 shadow">
+                    <div class="card-header bg-info text-white">
+                        <h5 class="mb-0">Descriptive Statistics</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">
+                            Descriptive statistics summarize and describe the main features of data sets, 
+                            providing insights into patterns and distributions.
+                        </p>
+                        <h6>Key Concepts:</h6>
+                        <ul class="small">
+                            <li>Measures of central tendency (mean, median, mode)</li>
+                            <li>Measures of variability (range, variance, standard deviation)</li>
+                            <li>Frequency distributions and histograms</li>
+                            <li>Percentiles and quartiles</li>
+                        </ul>
+                        <div class="mt-3">
+                            <span class="badge bg-info">Foundation</span>
+                            <span class="badge bg-success">Data Analysis</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-4">
+                <div class="card h-100 shadow">
+                    <div class="card-header bg-info text-white">
+                        <h5 class="mb-0">Probability</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">
+                            Probability theory provides the mathematical foundation for understanding uncertainty 
+                            and making informed decisions based on data.
+                        </p>
+                        <h6>Key Concepts:</h6>
+                        <ul class="small">
+                            <li>Basic probability rules</li>
+                            <li>Conditional probability</li>
+                            <li>Independent and dependent events</li>
+                            <li>Binomial and normal distributions</li>
+                        </ul>
+                        <div class="mt-3">
+                            <span class="badge bg-info">Intermediate</span>
+                            <span class="badge bg-warning">Theory</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Study Resources -->
+    <div class="row mt-5">
+        <div class="col-12">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <i class="fas fa-graduation-cap"></i> Study Resources
+                    </h5>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6>Practice Problems:</h6>
+                            <ul class="mb-0">
+                                <li>Work through examples step by step</li>
+                                <li>Complete end-of-chapter exercises</li>
+                                <li>Use online practice platforms</li>
+                                <li>Form study groups with classmates</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h6>Learning Strategies:</h6>
+                            <ul class="mb-0">
+                                <li>Review concepts regularly</li>
+                                <li>Connect abstract concepts to real-world examples</li>
+                                <li>Use visual aids and diagrams</li>
+                                <li>Teach concepts to others to reinforce understanding</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

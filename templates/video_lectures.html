@@ -1,0 +1,234 @@
+{% extends "base.html" %}
+
+{% block title %}Video Lectures - Ted-Ed Riddles{% endblock %}
+
+{% block content %}
+<div class="container mt-4 video-lectures">
+    <div class="row">
+        <div class="col-12">
+            <div class="page-header text-center mb-5">
+                <h1 class="display-4 text-white">
+                    <i class="fas fa-play-circle"></i> Video Lectures
+                </h1>
+                <p class="lead text-white">Learn through engaging Ted-Ed riddles and educational videos</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Featured Video Section -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card shadow-lg">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="mb-0">
+                        <i class="fas fa-star"></i> Featured Riddle
+                    </h3>
+                </div>
+                <div class="card-body p-0">
+                    <div class="ratio ratio-16x9">
+                        <iframe src="https://www.youtube.com/embed/7yDmGnA8Hw0" 
+                                title="Can you solve the bridge riddle?" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="p-4">
+                        <h4>Can you solve the bridge riddle?</h4>
+                        <p class="text-muted">Four people need to cross a rickety bridge at night. Unfortunately, they have only one torch and the bridge is too dangerous to cross without one. The bridge is strong enough to support only two people at a time.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="badge bg-success">Logic</span>
+                            <span class="badge bg-info">Problem Solving</span>
+                            <span class="badge bg-warning">Critical Thinking</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Video Categories -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <h3 class="mb-3">
+                <i class="fas fa-th-large"></i> Video Categories
+            </h3>
+        </div>
+    </div>
+
+    <!-- Logic and Riddles -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <h4 class="text-primary mb-3">
+                <i class="fas fa-brain"></i> Logic & Riddles
+            </h4>
+        </div>
+    </div>
+
+    <div class="row mb-4">
+        <div class="col-md-6 mb-4">
+            <div class="card h-100 shadow">
+                <div class="card-body p-0">
+                    <div class="ratio ratio-16x9">
+                        <iframe src="https://www.youtube.com/embed/N5vJSNXPEwA" 
+                                title="Can you solve the prisoner hat riddle?" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="p-3">
+                        <h5>Can you solve the prisoner hat riddle?</h5>
+                        <p class="text-muted small">A classic logic puzzle that tests deductive reasoning.</p>
+                        <span class="badge bg-primary">Logic</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-4">
+            <div class="card h-100 shadow">
+                <div class="card-body p-0">
+                    <div class="ratio ratio-16x9">
+                        <iframe src="https://www.youtube.com/embed/mmkCS5eA4f8" 
+                                title="Can you solve the wizard standoff riddle?" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="p-3">
+                        <h5>Can you solve the wizard standoff riddle?</h5>
+                        <p class="text-muted small">A strategic problem-solving challenge.</p>
+                        <span class="badge bg-primary">Strategy</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Math and Science -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <h4 class="text-success mb-3">
+                <i class="fas fa-calculator"></i> Math & Science
+            </h4>
+        </div>
+    </div>
+
+    <div class="row mb-4">
+        <div class="col-md-6 mb-4">
+            <div class="card h-100 shadow">
+                <div class="card-body p-0">
+                    <div class="ratio ratio-16x9">
+                        <iframe src="https://www.youtube.com/embed/ZKh6z0X6KRw" 
+                                title="Can you solve the virus riddle?" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="p-3">
+                        <h5>Can you solve the virus riddle?</h5>
+                        <p class="text-muted small">A mathematical puzzle that went viral on social media.</p>
+                        <span class="badge bg-success">Mathematics</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-4">
+            <div class="card h-100 shadow">
+                <div class="card-body p-0">
+                    <div class="ratio ratio-16x9">
+                        <iframe src="https://www.youtube.com/embed/UBVV8pch1dM" 
+                                title="The science of thinking" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="p-3">
+                        <h5>The science of thinking</h5>
+                        <p class="text-muted small">Understanding how our brain processes information.</p>
+                        <span class="badge bg-success">Science</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Language and Literature -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <h4 class="text-warning mb-3">
+                <i class="fas fa-language"></i> Language & Literature
+            </h4>
+        </div>
+    </div>
+
+    <div class="row mb-4">
+        <div class="col-md-6 mb-4">
+            <div class="card h-100 shadow">
+                <div class="card-body p-0">
+                    <div class="ratio ratio-16x9">
+                        <iframe src="https://www.youtube.com/embed/F5sZQ4Xutgk" 
+                                title="Can you solve the birthday cake riddle?" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="p-3">
+                        <h5>Can you solve the birthday cake riddle?</h5>
+                        <p class="text-muted small">A linguistic puzzle that challenges vocabulary and reasoning.</p>
+                        <span class="badge bg-warning">Language</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-4">
+            <div class="card h-100 shadow">
+                <div class="card-body p-0">
+                    <div class="ratio ratio-16x9">
+                        <iframe src="https://www.youtube.com/embed/eREopphW5Bw" 
+                                title="The hidden meaning in stories" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="p-3">
+                        <h5>The hidden meaning in stories</h5>
+                        <p class="text-muted small">Discovering deeper meanings in literature and narratives.</p>
+                        <span class="badge bg-warning">Literature</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Learning Tips -->
+    <div class="row mt-5">
+        <div class="col-12">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <i class="fas fa-lightbulb"></i> Learning Tips
+                    </h5>
+                    <ul class="mb-0">
+                        <li>Watch each video multiple times to fully understand the concepts</li>
+                        <li>Pause the video to think about solutions before watching the answer</li>
+                        <li>Discuss the riddles with classmates to develop different perspectives</li>
+                        <li>Try to create your own similar problems to reinforce learning</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+
