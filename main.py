@@ -29,6 +29,7 @@ class User(UserMixin, db.Model):
     email = db.Column(db.String(120), unique=True, nullable=False)
     password_hash = db.Column(db.String(120), nullable=False)
     is_student = db.Column(db.Boolean, default=True)
+    is_admin = db.Column(db.Boolean, default=False)  # New admin field
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
 class Course(db.Model):
@@ -71,6 +72,25 @@ class ClickEvent(db.Model):
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
+
+# Admin user creation function
+def create_admin_user():
+    """Create admin user if it doesn't exist"""
+    with app.app_context():
+        admin_user = User.query.filter_by(username='admin').first()
+        if not admin_user:
+            admin_user = User(
+                username='admin',
+                email='admin@edulearn.com',
+                password_hash=generate_password_hash('admin123'),
+                is_student=False,
+                is_admin=True
+            )
+            db.session.add(admin_user)
+            db.session.commit()
+            print("✅ Admin user created: username='admin', password='admin123'")
+        else:
+            print("ℹ️ Admin user already exists")
 
 # Routes
 @app.route('/')
@@ -191,7 +211,11 @@ def track_click():
 @app.route('/export_clickstream')
 @login_required
 def export_clickstream():
-    """Export clickstream data to Excel"""
+    """Export clickstream data to Excel - Admin only"""
+    if not current_user.is_admin:
+        flash('Access denied. Admin privileges required.', 'error')
+        return redirect(url_for('index'))
+    
     try:
         # Get all click events
         click_events = ClickEvent.query.all()
@@ -243,7 +267,10 @@ def export_clickstream():
 @app.route('/export_data')
 @login_required
 def export_data():
-    """Simple export page for clickstream data"""
+    """Export page for clickstream data - Admin only"""
+    if not current_user.is_admin:
+        flash('Access denied. Admin privileges required.', 'error')
+        return redirect(url_for('index'))
     return render_template('export_data.html')
 
 @app.route('/video_lectures')
@@ -261,4 +288,5 @@ def text_lessons():
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
+        create_admin_user()  # Create admin user on startup
     app.run(debug=True)
