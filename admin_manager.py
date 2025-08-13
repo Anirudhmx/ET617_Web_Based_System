@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """
 Admin User Management Script for ET617 Learning Platform
-This script helps manage admin users and their privileges
 """
 
 import os
@@ -12,13 +11,11 @@ from werkzeug.security import generate_password_hash
 def create_admin_user(username, email, password):
     """Create a new admin user"""
     with app.app_context():
-        # Check if user already exists
         existing_user = User.query.filter_by(username=username).first()
         if existing_user:
             print(f"❌ User '{username}' already exists!")
             return False
         
-        # Create new admin user
         admin_user = User(
             username=username,
             email=email,
@@ -34,7 +31,6 @@ def create_admin_user(username, email, password):
         print(f"   Username: {username}")
         print(f"   Email: {email}")
         print(f"   Password: {password}")
-        print(f"   Admin: Yes")
         return True
 
 def make_user_admin(username):
@@ -66,26 +62,6 @@ def list_admin_users():
         for user in admin_users:
             print(f"Username: {user.username}")
             print(f"Email: {user.email}")
-            print(f"Created: {user.created_at}")
-            print(f"Student: {user.is_student}")
-            print("-" * 50)
-
-def list_all_users():
-    """List all users"""
-    with app.app_context():
-        users = User.query.all()
-        
-        if not users:
-            print("ℹ️ No users found.")
-            return
-        
-        print("👥 All Users:")
-        print("-" * 50)
-        for user in users:
-            admin_badge = "👑" if user.is_admin else ""
-            student_badge = "🎓" if user.is_student else "👨‍🏫"
-            print(f"{admin_badge} {student_badge} {user.username} ({user.email})")
-            print(f"   Admin: {user.is_admin}, Student: {user.is_student}")
             print("-" * 50)
 
 def main():
@@ -97,11 +73,9 @@ def main():
         print("  python admin_manager.py create <username> <email> <password>")
         print("  python admin_manager.py make-admin <username>")
         print("  python admin_manager.py list-admins")
-        print("  python admin_manager.py list-users")
         print("\nExamples:")
         print("  python admin_manager.py create admin admin@example.com admin123")
         print("  python admin_manager.py make-admin john")
-        print("  python admin_manager.py list-admins")
         return
     
     command = sys.argv[1].lower()
@@ -118,9 +92,6 @@ def main():
     
     elif command == "list-admins":
         list_admin_users()
-    
-    elif command == "list-users":
-        list_all_users()
     
     else:
         print("❌ Invalid command or arguments!")

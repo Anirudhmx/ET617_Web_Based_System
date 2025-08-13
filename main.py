@@ -29,7 +29,7 @@ class User(UserMixin, db.Model):
     email = db.Column(db.String(120), unique=True, nullable=False)
     password_hash = db.Column(db.String(120), nullable=False)
     is_student = db.Column(db.Boolean, default=True)
-    is_admin = db.Column(db.Boolean, default=False)  # New admin field
+    is_admin = db.Column(db.Boolean, default=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
 class Course(db.Model):
@@ -57,7 +57,7 @@ class Note(db.Model):
 
 class ClickEvent(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=True)  # Nullable for anonymous users
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=True)
     session_id = db.Column(db.String(100), nullable=False)
     page_url = db.Column(db.String(500), nullable=False)
     element_id = db.Column(db.String(200), nullable=True)
@@ -159,7 +159,7 @@ def course_detail(course_id):
 @app.route('/create_course', methods=['GET', 'POST'])
 @login_required
 def create_course():
-    if not current_user.is_student:  # Only instructors can create courses
+    if not current_user.is_student:
         if request.method == 'POST':
             title = request.form['title']
             description = request.form['description']
@@ -187,7 +187,6 @@ def track_click():
     try:
         data = request.get_json()
         
-        # Create click event
         click_event = ClickEvent(
             user_id=current_user.id if current_user.is_authenticated else None,
             session_id=session.get('session_id', 'anonymous'),
@@ -217,10 +216,8 @@ def export_clickstream():
         return redirect(url_for('index'))
     
     try:
-        # Get all click events
         click_events = ClickEvent.query.all()
         
-        # Convert to DataFrame
         data = []
         for event in click_events:
             user = User.query.get(event.user_id) if event.user_id else None
@@ -242,14 +239,12 @@ def export_clickstream():
         
         df = pd.DataFrame(data)
         
-        # Create Excel file in memory
         output = BytesIO()
         with pd.ExcelWriter(output, engine='openpyxl') as writer:
             df.to_excel(writer, sheet_name='Clickstream Data', index=False)
         
         output.seek(0)
         
-        # Generate filename with timestamp
         timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
         filename = f'clickstream_data_{timestamp}.xlsx'
         
@@ -288,5 +283,5 @@ def text_lessons():
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
-        create_admin_user()  # Create admin user on startup
+        create_admin_user()
     app.run(debug=True)
